@@ -1,0 +1,152 @@
+Disclaimer: Although we have made our best efforts to write a good code, 
+we can not make any warranties that the programs in these routines will 
+work in your computer. In particular, there are some bit manipulation
+functions that might not be standard for your compiler. It is your
+responsability to test that the random numbers generated are indeed correct.
+
+**************************************************************
+
+		RANXOR ,  DRANXOR
+
+************ RANDOM NUMBER GENERATORS  ***********************
+
+            Based on x(i)=x(i-p).xor.x(i-q) type algorithms
+
+At present, it uses
+		p=1279		q=418
+
+Implements following functions and subroutines (SINGLE PRECISION!!!)
+
+subroutine ran_ini(iseed)
+		Initializes random number generator. Must be 
+		called once before any other use of the generators. 
+		iseed is your integer seed for the generator.
+		
+subroutine ran_write(iunit)
+		Writes in unit iunit the complete status of the
+		generator to continue runs.
+
+subroutine ran_read(iunit)
+		Reads from unit iunit the status of the 
+		generator.
+
+function ran_u()
+		Returns random number uniformly distributed in 
+		the interval (0,1)
+
+function i_ran(n)
+		Integer function. Returns an integer random 
+		number uniformly distributed in (1,n).
+  			If n<=0 returns an integer number between 0 and 2**31-1
+
+function ran_g()
+		Returns Gaussian distributed (mean 0, variance 1)
+		by using a numerical inversion method (see 
+		explanation below).
+
+subroutine ran_bm(x1,x2)
+		Returns in x1,x2, two Gaussian distributed 
+		(mean 0, variance 1) random numbers
+		by using the Box-Muller-Wiener algorithm.
+
+Next follows the vector routine for the fast Gaussian generator
+It is not a real Gaussian distribution because it is cut-off
+The cut-off value depends on the parameter np. See details in
+  "Generation of Gaussian distributed random numbers by using a 
+   numerical inversion method", R. Toral, A. Chakrabarti. Computer
+   Physics Communications, 74 (1993) 327-334.
+
+	call ran_gv(x,n)
+
+		will fill up n-component vector x with "Gaussian"
+		distributed (mean 0, variance 1) random numbers.
+
+If your prefer to use the old version of ran_gv which uses an auxiliary 
+vector ix(n+1279) the format is:
+
+subroutine ran_gvv(ix,x,n) 
+
+where ix has to be declared integer ix(n+1279) in the main program. This
+version takes more memory but it might vectorize (in the VAX-9000 it does
+vectorize).
+
+If you really need the double precision version of these routines, they 
+are in the file DRANXOR and their name is obtained by substituting
+RAN by DRAN in the previous names, i.e.:
+
+    === DRANXOR ====
+
+	dran_ini(iseed)
+	dran_write(iunit)
+	dran_read(iunit)
+	dran_u()
+	i_dran(n)
+	dran_g()
+	dran_bm(x1,x2)
+	dran_gv(x,n)
+	dran_gvv(ix,x,n) 
+
+	Do not mix up single precision and double precision routines!
+	
+
+	Finally, it might be a good idea to use a different uniform
+random generator for checking the results. It seems that other good
+generators can be obtained based on different values:
+
+	p=2281, q=1029
+	p=4423,	q=2098
+	p=9689, q=4187
+	etc.
+
+However, remember that the pair (p=250, q=103), known as R250 generator,
+does not have good statistical properties.
+
+
+Example program 1. 
+
+Writes in unit (6) 10 sets of (uniform,integer between 1 and 100) random numbers
+
+	call ran_ini(87265)
+	do i=1,10
+	write(6,*) ran_u(),i_ran(100)
+	enddo
+	end
+
+Example program 2. 
+
+Computes average and variance of 100 Gaussian numbers in double
+precision.
+
+	implicit double precision (a-h,o-z)
+	call dran_ini(95237)
+	xm=0.0d0
+	x2=0.0d0
+	do i=1,100
+	g=dran_g()
+	xm=xm+g
+	x2=x2+g*g
+	enddo
+	xm=xm/100
+	x2=x2/100-xm*xm
+	write(6,*) xm,x2
+	end
+
+Example program 3. 
+
+Generates a vector of 100 double precision Gaussian random numbers and
+computes its mean and variance.
+
+	implicit double precision (a-h,o-z)
+	dimension x(100)
+	call dran_ini(365441)
+	xm=0.0d0
+	x2=0.0d0
+	call dran_gv(x,100)
+	do i=1,100
+	xm=xm+x(i)
+	x2=x2+x(i)*x(i)
+	enddo
+	xm=xm/100
+	x2=x2/100-xm*xm
+	write(6,*) xm,x2
+	end
