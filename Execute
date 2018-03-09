@@ -1,0 +1,18 @@
+#!/bin/bash
+# My first script
+echo "Compile Vicsek"
+gfortran Vicsek_model.f dranxor2.f -o exe
+echo "Execute Vicsek: creating data files"
+time ./exe
+echo "Creating .png files with snapshots"
+gnuplot multiple.plt
+echo "Creating .mp4 video from snapshots"
+ffmpeg -r 14 -i image.%d.png -c:v libx264 -r 30 -pix_fmt yuv420p out.mp4
+#This last lines will remove .dat and .png files after creating the video
+#CAREFUL! all .png and .dat files in the directory will be erased
+#echo "Deleting .dat files"
+#find . -type f -name '*.dat' -delete
+#echo "Deleting .png files"
+#find . -type f -name '*.png' -delete
+
+
