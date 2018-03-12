@@ -7,7 +7,7 @@ From very simple rules at the individual (bird) level a non trivial movement at 
 * Some examples of how a bad parametric choice cand lead to unnatural movements
   * [Movie2](https://www.youtube.com/watch?v=G82fXgspkhs&feature=youtu.be) https://www.youtube.com/watch?v=G82fXgspkhs&feature=youtu.be 
   * [Movie3](https://www.youtube.com/watch?v=UfYhpFwwyQI) https://www.youtube.com/watch?v=UfYhpFwwyQI
-  * [Movie4](https://www.youtube.com/watch?v=hFrUGDazobQ&feature=youtu.be){https://www.youtube.com/watch?v=hFrUGDazobQ&feature=youtu.be
-  * [Movie5](https://www.youtube.com/watch?v=HG7Wh7oYMis&feature=youtu.be){https://www.youtube.com/watch?v=hFrUGDazobQ&feature=youtu.be
+  * [Movie4](https://www.youtube.com/watch?v=hFrUGDazobQ&feature=youtu.be) https://www.youtube.com/watch?v=hFrUGDazobQ&feature=youtu.be
+  * [Movie5](https://www.youtube.com/watch?v=HG7Wh7oYMis&feature=youtu.be) https://www.youtube.com/watch?v=hFrUGDazobQ&feature=youtu.be
 * [Movie6](https://www.youtube.com/watch?v=KwlSgCWQt4k&feature=youtu.be) https://www.youtube.com/watch?v=KwlSgCWQt4k&feature=youtu.be - Simulated flock of birds by using Vicsek model.
 * [Movie7](https://www.youtube.com/watch?v=A8Xt3DlrwhY&feature=youtu.be) https://www.youtube.com/watch?v=A8Xt3DlrwhY&feature=youtu.be - Bats simulated by Boids model. Scene from 1992 Batman Returns.
