@@ -2,7 +2,11 @@
 The concept of *emergence* is exemplified through the well-known movement of a flock of birds.
 From very simple rules at the individual (bird) level a non trivial movement at the collective (flock) level will give rise.
 # Codes
-* **Boids.py**: Python 3 code, implementation of a 2D naive boids model. The output is a .mp4 video with the evolution of the flock starting from a homogeneous initial condition (positions and velocities setted up at random).
+* **Vicsek_model.f**: FORTRAN 77 code, implementation of 2D Vicsek model by using link-cell + ghost cells method. To generate video with evolution of the flock:
+ 1. Compile and run Vicsek_model.f
+ 1. run Execute
+ The output is a .mp4 video with the evolution of the flock starting from a homogeneous initial condition (positions and velocities setted up at random).
+* **Boid.py**: Python 3 code, implementation of a 2D naive boids model. The output is a .mp4 video with the evolution of the flock starting from a homogeneous initial condition (positions and velocities setted up at random).
 ## URL addresses
 * [Movie0](www.youtube.com/watch?v=xxw3zglK7Os&t=0s&index=16&list=PL7A9POR1j9Mox3jOb0YYVWo4Y_6tCVkeo) www.youtube.com/watch?v=xxw3zglK7Os&t=0s&index=16&list=PL7A9POR1j9Mox3jOb0YYVWo4Y_6tCVkeo - Dr. Andrea Cavagna explains basis of the theory plus important empirical results.
 * [Movie1](https://www.youtube.com/watch?v=PTo5Akpjpww&feature=youtu.be) https://www.youtube.com/watch?v=PTo5Akpjpww&feature=youtu.be - Simulated flock of birds by using Boids model.
