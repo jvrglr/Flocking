@@ -1,5 +1,4 @@
 #!/bin/bash
-# My first script
 echo "Compile Vicsek..."
 gfortran Vicsek_model.f dranxor2.f -o exe
 echo "Execute Vicsek: creating data files..."
