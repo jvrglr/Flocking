@@ -3,8 +3,12 @@ The concept of *emergence* is exemplified through the well-known movement of a f
 From very simple rules at the individual (bird) level a non trivial movement at the collective (flock) level will give rise.
 # Codes
 * **Vicsek_model.f**: FORTRAN 77 code, implementation of 2D Vicsek model by using link-cell + ghost cells method. To generate video with evolution of the flock:
- 1. Compile and run Vicsek_model.f
- 1. run **Execute**.
+ 1. run **Execute**: This script will 
+  * Run and execute Vicsek_model.f
+  * Generate .png pictures (frames of the video) from the .dat files by using Gnuplot.
+  * Create movie using ffmpeg
+  * Delete .dat files
+  * optional: delete .png files
  
 The output is a .mp4 video with the evolution of the flock starting from a homogeneous initial condition (positions and velocities setted up at random). All frames of the movie will also be saved as .png files, to avoid this, open the Execute file with a text editor and follow the instructions. **WARNING!** THE **Execute** SCRIPT WILL DELETE ALL .DAT FILES!
 * **Boid.py**: Python 3 code, implementation of a 2D naive boids model. The output is a .mp4 video with the evolution of the flock starting from a homogeneous initial condition (positions and velocities setted up at random).
